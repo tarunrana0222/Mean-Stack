@@ -1,0 +1,22 @@
+<mat-card>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form [formGroup]="form" *ngIf="!isLoading" (submit)="onAddPost()" >
+        <mat-form-field>
+            <input type="text" formControlName="title" matInput name="title"  placeholder="Title">
+            <mat-error *ngIf="form.get('title')?.invalid">Please enter title</mat-error>
+        </mat-form-field>
+        <div >
+            <button type="button" mat-raised-button (click)="fileSelect.click()">{{ editMode ? 'Replace Image' : 'Pick Image' }}</button>
+            <input type="file" #fileSelect (change)="onImagePicked($event)" accept="image/png, image/jpeg, image/jpg">
+        </div>
+        <div class="image-preview" *ngIf="imageUrl !== '' && imageUrl">
+            <img [src]="imageUrl" [alt]="form.value.title" >
+        </div>
+        <mat-form-field>
+            <textarea matInput rows="5" formControlName="content" name="content"  placeholder="Content"></textarea>
+            <mat-error *ngIf="form.get('content')?.invalid">Please enter Content</mat-error>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button color="accent" type="submit" >Save Post</button>
+    </form>
+</mat-card>
