@@ -8,7 +8,8 @@ const path = require('path');
 
 
 const app = express();
-mongoose.connect('mongodb+srv://admin:admin@cluster0.pywuq.mongodb.net/meandb?retryWrites=true&w=majority').then(() => {
+//password and admin **
+mongoose.connect('mongodb+srv://******@******cluster0.pywuq.mongodb.net/meandb?retryWrites=true&w=majority').then(() => {
     console.log("Connected to DB");
 }).catch(() => {
     console.log("DB connection failed");
